@@ -1,7 +1,8 @@
 import Shelter.Animal;
 import Shelter.AnimalService;
-import Shelter.Dog;
 import Shelter.ShelterService;
+
+import java.util.Arrays;
 
 public class Run {
 
@@ -13,9 +14,9 @@ public class Run {
 
         for (Animal animal : shelterService.getAnimals()) {
             System.out.println("Animalul cu Id-ul " + animal.getId()
-                            + " are numele " + animal.getName()
-                            + " si are " + animal.getAge()
-                            + " ani.");
+                    + " are numele " + animal.getName()
+                    + " si are " + animal.getAge()
+                    + " ani.");
         }
 
         Animal dogs[] = shelterService.getAllDogs();

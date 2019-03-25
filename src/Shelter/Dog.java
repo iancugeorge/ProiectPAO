@@ -6,9 +6,6 @@ public class Dog extends Animal {
 
     public Dog(){}
 
-    public Dog(int id, String name, boolean sex) {
-        super(id, name, sex);
-    }
 
     public void latra()
     {

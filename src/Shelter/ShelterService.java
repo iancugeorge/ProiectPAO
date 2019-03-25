@@ -2,12 +2,28 @@ package Shelter;
 
 import java.util.Date;
 
-public class ShelterService {
+public class ShelterService<idx> {
 
-    private Animal animals[] = new Animal[]{
-            new Dog(1, "Max", false), new Cat(1, "Tom", false)};
+    private Animal[] animals =
+            new Animal[]{
+                    new DogBuilder()
+                            .withId(1)
+                            .withName("Max")
+                            .withSex(false)
+                            .build(),
+                    new CatBuilder()
+                            .withId(2)
+                            .withName("Tom")
+                            .withSex(false)
+                            .build()
+            };
 
-    private Cage cages[] = new Cage[]{
+
+
+
+    //
+
+    private Cage[] cages = new Cage[]{
 
     };
 
@@ -47,7 +63,7 @@ public class ShelterService {
         Animal[] cats = new Animal[10];
         int index = 0;
         for (Animal animal:animals) {
-            Cat cat = new Cat(0,"",false);
+            Cat cat = new Cat();
             if(animal.getClass() == cat.getClass())
             {
                 cats[index] = animal;
