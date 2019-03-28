@@ -1,14 +1,10 @@
-package Shelter;
+package shelter.domain.entity;
 
 public class Cage {
 
     private int id;
     private Dog[] dogs;
-
-    public Cage(int id, Dog[] dogs) {
-        this.id = id;
-        this.dogs = dogs;
-    }
+    private Veterinarian veterinarian;
 
     public int getId() {
         return id;
@@ -26,5 +22,11 @@ public class Cage {
         this.dogs = dogs;
     }
 
+    public Veterinarian getVeterinarian() {
+        return veterinarian;
+    }
 
+    public void setVeterinarian(Veterinarian veterinarian) {
+        this.veterinarian = veterinarian;
+    }
 }

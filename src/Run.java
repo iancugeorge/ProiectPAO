@@ -1,24 +1,23 @@
+import shelter.configuration.RepositoryConfig;
 import shelter.domain.entity.Animal;
+import shelter.domain.repository.AnimalRepository;
 import shelter.services.AnimalService;
-import shelter.domain.repository.ShelterRepository;
 
 public class Run {
 
     public static void main(String[] args) {
 
-        ShelterRepository shelterRepository = ShelterRepository.getShelterService();
         AnimalService animalService = AnimalService.getAnimalService();
+        AnimalRepository animalRepository = RepositoryConfig.getAnimalRepository();
 
-/*
-        for (Animal animal : shelterRepository.getAnimals()) {
+        for (Animal animal : animalRepository.getAllAnimals()) {
             System.out.println("Animalul cu Id-ul " + animal.getId()
                     + " are numele " + animal.getName()
-                    + " si are " + animal.getAge()
-                    + " ani.");
+                    + " este " + animal.getGender()
+                    + ". Statutul adoptarii -> " + animalService.checkAdopted(animal));
         }
+        
 
-        Animal dogs[] = shelterRepository.getAllDogs();
-        dogs[0].latra();
-        */
+
     }
 }

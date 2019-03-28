@@ -1,12 +1,13 @@
 
 .idea/workspace.xml
+out/*
 out/production/ProiectPAO/Run.class
-out/production/ProiectPAO/Shelter/Animal.class
-out/production/ProiectPAO/Shelter/Cage.class
-out/production/ProiectPAO/Shelter/Cat.class
-out/production/ProiectPAO/Shelter/Dog.class
-out/production/ProiectPAO/Shelter/ShelterService.class
+out/production/ProiectPAO/shelter/Animal.class
+out/production/ProiectPAO/shelter/Cage.class
+out/production/ProiectPAO/shelter/Cat.class
+out/production/ProiectPAO/shelter/Dog.class
+out/production/ProiectPAO/shelter/ShelterService.class
 out/production/ProiectPAO/Run.class
-out/production/ProiectPAO/Shelter/ShelterService.class
+out/production/ProiectPAO/shelter/ShelterService.class
 out/production/ProiectPAO/Run.class
-out/production/ProiectPAO/Shelter/ShelterService.class
+out/production/ProiectPAO/shelter/ShelterService.class
