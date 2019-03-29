@@ -9,8 +9,5 @@ public interface CageRepository {
     Cage[] getAllCages();
     Cage getCageById(int id);
 
-    /**
-     *
-     */
 
 }
