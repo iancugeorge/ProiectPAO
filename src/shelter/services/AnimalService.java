@@ -5,11 +5,13 @@ import shelter.domain.entity.Animal;
 import shelter.domain.entity.Cage;
 import shelter.domain.entity.Dog;
 import shelter.domain.repository.AnimalRepository;
+import shelter.tool.Species;
 
 public class AnimalService {
 
 
-    private AnimalRepository animalRepository = RepositoryConfig.getAnimalRepository();
+    private AnimalRepository animalRepo = RepositoryConfig.getAnimalRepository();
+
 
     private static AnimalService instance;
 
@@ -26,18 +28,16 @@ public class AnimalService {
 
 
     public boolean checkAdopted(Animal animal) {
-        if (animal.getAdoption() == null)
-            return false;
-        else return true;
+        return animal.getAdoption() != null;
     }
 
 
-    public Dog[] getDogsByCage(Cage cage){
+    public Dog[] getDogsByCage(Cage cage) {
 
         int i = 0;
         Dog[] dogs = new Dog[10];
 
-        for (Dog dog: animalRepository.getAllDogs()
+        for (Dog dog : animalRepo.getAllDogs()
         ) {
             if (dog.getCage() == cage) {
                 dogs[i] = dog;
@@ -47,5 +47,35 @@ public class AnimalService {
         return dogs;
     }
 
+    public Species getSpecies(Animal animal) {
+        Species species = Species.CAT;
+        Dog dog = new Dog();
+        if (animal.getClass() == dog.getClass())
+            species = Species.DOG;
+        return species;
+    }
+
+    public void listAllAnimals() {
+        for (Animal animal : animalRepo.getAllAnimals()
+        ) {
+            listAnimal(animal);
+        }
+    }
+
+    public void listAnimals(Animal[] animals) {
+        for (Animal animal : animals
+        ) {
+            listAnimal(animal);
+        }
+    }
+
+    public void listAnimal(Animal animal) {
+        System.out.println("Animal with ID: " + animal.getId()
+                + " is named " + animal.getName()
+                + " and is " + animal.getGender() + " " + getSpecies(animal)
+                + ". ChipID: " + animal.getChipId()
+                + " PassportID: " + animal.getPassportId()
+                + ". Adoption status -> " + checkAdopted(animal));
+    }
 
 }
