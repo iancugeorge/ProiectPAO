@@ -10,6 +10,10 @@ public class Run {
 
         animalService.listAllAnimals();
 
+        cageService.addDogToCageById(1,1);
+        cageService.addDogToCageById(2,1);
+        cageService.addDogToCageById(3,2);
+        cageService.addDogToCageById(4,3);
         cageService.listAllCages();
     }
 }

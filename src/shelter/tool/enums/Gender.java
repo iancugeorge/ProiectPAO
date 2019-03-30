@@ -1,4 +1,4 @@
-package shelter.tool;
+package shelter.tool.enums;
 
 public enum Gender {
         MALE,

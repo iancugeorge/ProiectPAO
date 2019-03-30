@@ -1,6 +1,6 @@
 package shelter.domain.entity;
 
-import shelter.tool.Gender;
+import shelter.tool.enums.Gender;
 
 public abstract class Animal {
 

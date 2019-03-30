@@ -5,7 +5,7 @@ import shelter.domain.entity.Animal;
 import shelter.domain.entity.Cage;
 import shelter.domain.entity.Dog;
 import shelter.domain.repository.AnimalRepository;
-import shelter.tool.Species;
+import shelter.tool.enums.Species;
 
 public class AnimalService {
 
@@ -50,7 +50,7 @@ public class AnimalService {
     public Species getSpecies(Animal animal) {
         Species species = Species.CAT;
         Dog dog = new Dog();
-        if (animal.getClass() == dog.getClass())
+        if (animal != null && animal.getClass() == dog.getClass())
             species = Species.DOG;
         return species;
     }
@@ -70,12 +70,30 @@ public class AnimalService {
     }
 
     public void listAnimal(Animal animal) {
-        System.out.println("Animal with ID: " + animal.getId()
-                + " is named " + animal.getName()
-                + " and is " + animal.getGender() + " " + getSpecies(animal)
-                + ". ChipID: " + animal.getChipId()
-                + " PassportID: " + animal.getPassportId()
-                + ". Adoption status -> " + checkAdopted(animal));
+        if(animal != null) {
+            if (getSpecies(animal) == Species.CAT) {
+                System.out.println("Animal with ID: " + animal.getId()
+                        + " is named " + animal.getName()
+                        + " and is " + animal.getGender() + " " + getSpecies(animal)
+                        + ".\n\tChipID: " + animal.getChipId()
+                        + " PassportID: " + animal.getPassportId()
+                        + ".\n\tAdoption status -> " + checkAdopted(animal));
+            } else {
+                System.out.println("Animal with ID: " + animal.getId()
+                        + " is named " + animal.getName()
+                        + " and is " + animal.getGender() + " " + getSpecies(animal)
+                        + ".\n\tChipID: " + animal.getChipId()
+                        + " PassportID: " + animal.getPassportId()
+                        + ".\n\tAdoption status -> " + checkAdopted(animal));
+                if (checkAdopted(animal) == false) {
+                    Dog dog = (Dog) animal;
+                    if (dog.getCage() != null) {
+                        int CageId = dog.getCage().getId();
+                        System.out.println("\tIn cage: " + CageId);
+                    }
+                }
+            }
+        }
     }
 
 }

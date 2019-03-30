@@ -1,23 +1,52 @@
 package shelter.domain.repository;
 
+import shelter.configuration.RepositoryConfig;
 import shelter.domain.entity.*;
-import shelter.tool.CatBuilder;
-import shelter.tool.DogBuilder;
-import shelter.tool.Gender;
+import shelter.tool.builders.CatBuilder;
+import shelter.tool.builders.DogBuilder;
+import shelter.tool.enums.Gender;
 
 public class AnimalRepositoryImpl implements AnimalRepository{
+
+
+
 
     private Animal[] animals =
             new Animal[]{
                     new DogBuilder()
                             .withId(1)
                             .withName("Max")
-                            .withSex(Gender.MALE)
+                            .withGender(Gender.MALE)
+                            .withChipId("A1234567890")
+                            .withPassportId("B12345")
+                            .build(),
+                    new DogBuilder()
+                            .withId(2)
+                            .withName("Mini")
+                            .withGender(Gender.FEMAL)
+                            .withChipId("A1234567890")
+                            .withPassportId("B12345")
+                            .build(),
+                    new DogBuilder()
+                            .withId(3)
+                            .withName("Rex")
+                            .withGender(Gender.MALE)
+                            .withChipId("A1234567890")
+                            .withPassportId("B12345")
+                            .build(),
+                    new DogBuilder()
+                            .withId(4)
+                            .withName("Rexi")
+                            .withGender(Gender.FEMAL)
+                            .withChipId("A1234567890")
+                            .withPassportId("B12345")
                             .build(),
                     new CatBuilder()
-                            .withId(2)
+                            .withId(5)
                             .withName("Tom")
-                            .withSex(Gender.MALE)
+                            .withGender(Gender.MALE)
+                            .withChipId("A9876543210")
+                            .withPassportId("B54321")
                             .build()
             };
 
