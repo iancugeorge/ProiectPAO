@@ -96,6 +96,7 @@ public class AnimalService {
                 }
             }
         }
+        System.out.println();
     }
 
     public void addDog(int id, String name, Gender gender) {

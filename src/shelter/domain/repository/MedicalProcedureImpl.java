@@ -3,12 +3,26 @@ package shelter.domain.repository;
 import shelter.domain.entity.Animal;
 import shelter.domain.entity.MedicalProcedure;
 import shelter.domain.entity.Veterinarian;
+import shelter.tool.enums.MedType;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class MedicalProcedureImpl implements MedicalProcedureRepository {
 
-    private MedicalProcedure[] medicalProcedures = new MedicalProcedure[]{new MedicalProcedure()};
+    private MedicalProcedure[] medicalProcedures = new MedicalProcedure[]{};
+
+    private static int id = 0;
+
+    @Override
+    public int getId(){
+        return id;
+    }
+
+    @Override
+    public MedicalProcedure[] getAllMedicalProcedures(){
+        return medicalProcedures;
+    }
 
     @Override
     public MedicalProcedure getMedicalProcedureById(int id) {
@@ -59,5 +73,18 @@ public class MedicalProcedureImpl implements MedicalProcedureRepository {
             }
         }
         return medicalProceduresByDate;
+    }
+
+    @Override
+    public void addMedicalProcedure(MedicalProcedure medicalProcedure){
+        if (medicalProcedures != null) {
+            medicalProcedures = Arrays.copyOf(medicalProcedures, medicalProcedures.length + 1);
+            medicalProcedures[medicalProcedures.length - 1] = medicalProcedure;
+        } else {
+            medicalProcedures = new MedicalProcedure[1];
+            medicalProcedures[0] = medicalProcedure;
+        }
+
+        id++;
     }
 }

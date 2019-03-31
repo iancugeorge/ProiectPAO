@@ -10,4 +10,6 @@ public interface VeterinarianRepository {
     Veterinarian getVeterinarianById(int id);
 
     Veterinarian getVeterinarianByCage(Cage cage);
+
+
 }

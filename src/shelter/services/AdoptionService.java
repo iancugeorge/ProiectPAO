@@ -42,7 +42,7 @@ public class AdoptionService {
         System.out.println("Adoption with ID: " + adoption.getId()
                 + "\n\tAnimal ID-Name: " + adoption.getAnimal().getId() + " - " + adoption.getAnimal().getName()
                 + "\n\tAdopter ID-Name: " + adoption.getAdopter().getId() + " - " + adoption.getAdopter().getFirstName() + " " + adoption.getAdopter().getLastName()
-                + "\n\tOn " + adoption.getDate());
+                + "\n\tOn " + adoption.getDate() + "\n");
     }
 
     public void makeAdoption(int animalId, int adopterId, Date date) {

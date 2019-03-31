@@ -8,6 +8,8 @@ import java.util.Date;
 
 public interface MedicalProcedureRepository {
 
+    int getId();
+
     MedicalProcedure getMedicalProcedureById(int id);
 
     MedicalProcedure[] getMedicalProceduresByVet(Veterinarian veterinarian);
@@ -15,4 +17,8 @@ public interface MedicalProcedureRepository {
     MedicalProcedure[] getMedicalProceduresByAnimal(Animal animal);
 
     MedicalProcedure[] getMedicalProceduresByDate(Date date);
+
+    MedicalProcedure[] getAllMedicalProcedures();
+
+    void addMedicalProcedure(MedicalProcedure medicalProcedure);
 }

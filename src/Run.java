@@ -1,6 +1,5 @@
-import shelter.services.AdoptionService;
-import shelter.services.AnimalService;
-import shelter.services.CageService;
+import shelter.services.*;
+import shelter.tool.enums.MedType;
 
 import java.util.Date;
 
@@ -11,21 +10,30 @@ public class Run {
         AnimalService animalService = AnimalService.getAnimalService();
         CageService cageService = CageService.getCageService();
         AdoptionService adoptionService = AdoptionService.getAdoptionService();
+        MedicalProcedureService medicalProcedureService = MedicalProcedureService.getMedicalProcedureService();
+        AdopterService adopterService = AdopterService.getAdopterService();
+
+        cageService.addDogToCageById(1, 1);
+        cageService.addDogToCageById(2, 1);
+        cageService.addDogToCageById(3, 2);
+        cageService.addDogToCageById(4, 2);
 
 
-//        animalService.listAllAnimals();
-//
-//        animalService.addDog(11,"test1", MALE);
-//        animalService.addDog(12,"test2", FEMALE);
-//
-//        animalService.setChipId(11, "A1234567890");
-//        animalService.setPassportId(11, "B12345");
-//
+        medicalProcedureService.listAllMedicalProcedures();
+        medicalProcedureService.makeMedicalProcedure(1, 0, MedType.Castrate, new Date());
+        medicalProcedureService.makeMedicalProcedure(1, 0, MedType.CherryEye, new Date());
+        medicalProcedureService.listAllMedicalProcedures();
+
+        adopterService.listAllAdopters();
+        adopterService.addAdopter("John","Doe", "johndoe@email.com");
+        adopterService.addAdopter("Jane","Doe", "jane.Doe@email.com");
+        adopterService.listAllAdopters();
+
 
         adoptionService.makeAdoption(1, 0, new Date());
         adoptionService.makeAdoption(2, 0, new Date());
-
         animalService.listAllAnimals();
         adoptionService.listAllAdoptions();
+
     }
 }

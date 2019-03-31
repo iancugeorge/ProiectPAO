@@ -68,7 +68,7 @@ public class CageService {
         } else {
             System.out.println("Cage is empty.");
         }
-        System.out.println("Cared by: " + cage.getVeterinarian());
+        System.out.println("Cared by: " + cage.getVeterinarian() + "\n");
     }
 
     public int numberOfDogs(int id) {
