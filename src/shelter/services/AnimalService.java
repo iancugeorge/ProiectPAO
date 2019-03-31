@@ -3,17 +3,19 @@ package shelter.services;
 import shelter.configuration.RepositoryConfig;
 import shelter.domain.entity.Animal;
 import shelter.domain.entity.Cage;
+import shelter.domain.entity.Cat;
 import shelter.domain.entity.Dog;
 import shelter.domain.repository.AnimalRepository;
+import shelter.tool.builders.CatBuilder;
+import shelter.tool.builders.DogBuilder;
+import shelter.tool.enums.Gender;
 import shelter.tool.enums.Species;
 
 public class AnimalService {
 
 
-    private AnimalRepository animalRepo = RepositoryConfig.getAnimalRepository();
-
-
     private static AnimalService instance;
+    private AnimalRepository animalRepo = RepositoryConfig.getAnimalRepository();
 
     private AnimalService() {
     }
@@ -70,7 +72,7 @@ public class AnimalService {
     }
 
     public void listAnimal(Animal animal) {
-        if(animal != null) {
+        if (animal != null) {
             if (getSpecies(animal) == Species.CAT) {
                 System.out.println("Animal with ID: " + animal.getId()
                         + " is named " + animal.getName()
@@ -94,6 +96,32 @@ public class AnimalService {
                 }
             }
         }
+    }
+
+    public void addDog(int id, String name, Gender gender) {
+        Dog dog = new DogBuilder()
+                .withId(id)
+                .withName(name)
+                .withGender(gender)
+                .build();
+        animalRepo.addDog(dog);
+    }
+
+    public void addCat(int id, String name, Gender gender) {
+        Cat cat = new CatBuilder()
+                .withId(id)
+                .withName(name)
+                .withGender(gender)
+                .build();
+        animalRepo.addCat(cat);
+    }
+
+    public void setChipId(int id, String chipId) {
+        animalRepo.getAnimalById(id).setChipId(chipId);
+    }
+
+    public void setPassportId(int id, String passportId) {
+        animalRepo.getAnimalById(id).setPassportId(passportId);
     }
 
 }

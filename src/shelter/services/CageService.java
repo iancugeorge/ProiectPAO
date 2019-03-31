@@ -10,11 +10,10 @@ import java.util.Arrays;
 
 public class CageService {
 
+    private static CageService instance;
     private CageRepository cageRepo = RepositoryConfig.getCageRepository();
     private AnimalRepository animalRepo = RepositoryConfig.getAnimalRepository();
     private AnimalService animalService = AnimalService.getAnimalService();
-
-    private static CageService instance;
 
     private CageService() {
     }
@@ -32,7 +31,7 @@ public class CageService {
 
         Dog[] dogs;
         if (cage.getDogs() != null) {
-            dogs = Arrays.copyOf(cage.getDogs(), cage.getDogs().length+1);
+            dogs = Arrays.copyOf(cage.getDogs(), cage.getDogs().length + 1);
             dogs[cage.getDogs().length] = dog;
         } else {
             dogs = new Dog[1];
@@ -53,14 +52,29 @@ public class CageService {
     public void listAllCages() {
         for (Cage cage : cageRepo.getAllCages()
         ) {
-            System.out.println("Cage with ID: " + cage.getId());
-            if (cage.getDogs() != null) {
-                System.out.println("With dogs: ");
-                animalService.listAnimals(cage.getDogs());
-            } else {
-                System.out.println("Cage is empty.");
-            }
-            System.out.println("Cared by: " + cage.getVeterinarian());
+            listCage(cage);
         }
+    }
+
+    public void listCageById(int id) {
+        listCage(cageRepo.getCageById(id));
+    }
+
+    public void listCage(Cage cage) {
+        System.out.println("Cage with ID: " + cage.getId());
+        if (cage.getDogs() != null) {
+            System.out.println("With dogs: ");
+            animalService.listAnimals(cage.getDogs());
+        } else {
+            System.out.println("Cage is empty.");
+        }
+        System.out.println("Cared by: " + cage.getVeterinarian());
+    }
+
+    public int numberOfDogs(int id) {
+        if (cageRepo.getCageById(id).getDogs() != null) {
+            return cageRepo.getCageById(id).getDogs().length;
+        }
+        return 0;
     }
 }

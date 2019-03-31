@@ -9,7 +9,10 @@ import java.util.Date;
 public interface MedicalProcedureRepository {
 
     MedicalProcedure getMedicalProcedureById(int id);
+
     MedicalProcedure[] getMedicalProceduresByVet(Veterinarian veterinarian);
+
     MedicalProcedure[] getMedicalProceduresByAnimal(Animal animal);
+
     MedicalProcedure[] getMedicalProceduresByDate(Date date);
 }

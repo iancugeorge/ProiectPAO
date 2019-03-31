@@ -1,14 +1,16 @@
 package shelter.domain.repository;
 
-import shelter.configuration.RepositoryConfig;
-import shelter.domain.entity.*;
+import shelter.domain.entity.Animal;
+import shelter.domain.entity.Cat;
+import shelter.domain.entity.Dog;
+import shelter.domain.entity.MedicalProcedure;
 import shelter.tool.builders.CatBuilder;
 import shelter.tool.builders.DogBuilder;
 import shelter.tool.enums.Gender;
 
-public class AnimalRepositoryImpl implements AnimalRepository{
+import java.util.Arrays;
 
-
+public class AnimalRepositoryImpl implements AnimalRepository {
 
 
     private Animal[] animals =
@@ -23,7 +25,7 @@ public class AnimalRepositoryImpl implements AnimalRepository{
                     new DogBuilder()
                             .withId(2)
                             .withName("Mini")
-                            .withGender(Gender.FEMAL)
+                            .withGender(Gender.FEMALE)
                             .withChipId("A1234567890")
                             .withPassportId("B12345")
                             .build(),
@@ -37,7 +39,7 @@ public class AnimalRepositoryImpl implements AnimalRepository{
                     new DogBuilder()
                             .withId(4)
                             .withName("Rexi")
-                            .withGender(Gender.FEMAL)
+                            .withGender(Gender.FEMALE)
                             .withChipId("A1234567890")
                             .withPassportId("B12345")
                             .build(),
@@ -54,14 +56,12 @@ public class AnimalRepositoryImpl implements AnimalRepository{
         return animals;
     }
 
-    public Dog[] getAllDogs()
-    {
+    public Dog[] getAllDogs() {
         Dog[] dogs = (Dog[]) new Animal[10];
         int index = 0;
-        for (Animal animal:animals) {
+        for (Animal animal : animals) {
             Dog dog = new Dog();
-            if(animal.getClass() == dog.getClass())
-            {
+            if (animal.getClass() == dog.getClass()) {
                 dogs[0] = (Dog) animal;
                 index++;
             }
@@ -69,14 +69,12 @@ public class AnimalRepositoryImpl implements AnimalRepository{
         return dogs;
     }
 
-    public Cat[] getAllCats()
-    {
+    public Cat[] getAllCats() {
         Cat[] cats = (Cat[]) new Animal[10];
         int index = 0;
-        for (Animal animal:animals) {
+        for (Animal animal : animals) {
             Cat cat = new Cat();
-            if(animal.getClass() == cat.getClass())
-            {
+            if (animal.getClass() == cat.getClass()) {
                 cats[index] = (Cat) animal;
                 index++;
             }
@@ -84,17 +82,36 @@ public class AnimalRepositoryImpl implements AnimalRepository{
         return cats;
     }
 
-    public Animal getAnimalById(int id){
+    public Animal getAnimalById(int id) {
 
-        for (Animal animal:animals) {
-            if(animal.getId() == id)
+        for (Animal animal : animals) {
+            if (animal.getId() == id)
                 return animal;
         }
         return null;
     }
 
+    public void addDog(Dog animal) {
+        if (animals != null) {
+            animals = Arrays.copyOf(animals, animals.length + 1);
+            animals[animals.length - 1] = animal;
+        } else {
+            animals = new Animal[1];
+            animals[0] = animal;
+        }
+    }
 
-    public MedicalProcedure[] getMedicalHistory(Animal animal){
+    public void addCat(Cat animal) {
+        if (animals != null) {
+            animals = Arrays.copyOf(animals, animals.length + 1);
+            animals[animals.length - 1] = animal;
+        } else {
+            animals = new Animal[1];
+            animals[0] = animal;
+        }
+    }
+
+    public MedicalProcedure[] getMedicalHistory(Animal animal) {
         return animal.getMedicalHistory();
     }
 

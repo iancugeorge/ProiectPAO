@@ -1,5 +1,7 @@
 package shelter.domain.entity;
 
+import shelter.tool.enums.MedType;
+
 import java.util.Date;
 
 public class MedicalProcedure {
@@ -8,8 +10,7 @@ public class MedicalProcedure {
     private Animal animal;
     private Veterinarian veterinarian;
 
-    // TODO: Gaseste un tip pentru type
-    // private TIP type;
+    private MedType type;
 
     private Date date;
 
@@ -43,5 +44,13 @@ public class MedicalProcedure {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public MedType getType() {
+        return type;
+    }
+
+    public void setType(MedType type) {
+        this.type = type;
     }
 }

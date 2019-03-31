@@ -28,7 +28,7 @@ public class VeterinarianRepositoryImpl implements VeterinarianRepository {
         ) {
             for (Cage newCage : veterinarian.getCages()
             ) {
-                if( newCage == cage)
+                if (newCage == cage)
                     return veterinarian;
             }
         }

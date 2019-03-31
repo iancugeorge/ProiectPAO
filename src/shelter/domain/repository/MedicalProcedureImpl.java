@@ -12,8 +12,8 @@ public class MedicalProcedureImpl implements MedicalProcedureRepository {
 
     @Override
     public MedicalProcedure getMedicalProcedureById(int id) {
-        for (MedicalProcedure medicalProcedure:medicalProcedures) {
-            if(medicalProcedure.getId() == id)
+        for (MedicalProcedure medicalProcedure : medicalProcedures) {
+            if (medicalProcedure.getId() == id)
                 return medicalProcedure;
         }
         return null;
@@ -24,8 +24,8 @@ public class MedicalProcedureImpl implements MedicalProcedureRepository {
         int i = 0;
         MedicalProcedure[] medicalProceduresByVet = new MedicalProcedure[10];
 
-        for (MedicalProcedure medicalProcedure:medicalProcedures) {
-            if(medicalProcedure.getVeterinarian() == veterinarian){
+        for (MedicalProcedure medicalProcedure : medicalProcedures) {
+            if (medicalProcedure.getVeterinarian() == veterinarian) {
                 medicalProceduresByVet[i] = medicalProcedure;
                 i++;
             }
@@ -38,8 +38,8 @@ public class MedicalProcedureImpl implements MedicalProcedureRepository {
         int i = 0;
         MedicalProcedure[] medicalProceduresByAnimal = new MedicalProcedure[10];
 
-        for (MedicalProcedure medicalProcedure:medicalProcedures) {
-            if(medicalProcedure.getAnimal() == animal){
+        for (MedicalProcedure medicalProcedure : medicalProcedures) {
+            if (medicalProcedure.getAnimal() == animal) {
                 medicalProceduresByAnimal[i] = medicalProcedure;
                 i++;
             }
@@ -52,8 +52,8 @@ public class MedicalProcedureImpl implements MedicalProcedureRepository {
         int i = 0;
         MedicalProcedure[] medicalProceduresByDate = new MedicalProcedure[10];
 
-        for (MedicalProcedure medicalProcedure:medicalProcedures) {
-            if(medicalProcedure.getDate() == date){
+        for (MedicalProcedure medicalProcedure : medicalProcedures) {
+            if (medicalProcedure.getDate() == date) {
                 medicalProceduresByDate[i] = medicalProcedure;
                 i++;
             }

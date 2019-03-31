@@ -1,6 +1,6 @@
 package shelter.domain.entity;
 
-public class Adopter extends Person{
+public class Adopter extends Person {
 
     private Adoption[] adoptions;
 

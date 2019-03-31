@@ -10,7 +10,10 @@ public class RepositoryConfig {
     private static final MedicalProcedureRepository medicalProcedureRepository = new MedicalProcedureImpl();
     private static final VeterinarianRepository veterinarianRepository = new VeterinarianRepositoryImpl();
     private static final AdopterRepository adopterRepository = new AdopterRepositoryImpl();
+    private static RepositoryConfig ourInstance = new RepositoryConfig();
 
+    private RepositoryConfig() {
+    }
 
     public static AnimalRepository getAnimalRepository() {
         return animalRepository;
@@ -36,13 +39,7 @@ public class RepositoryConfig {
         return adopterRepository;
     }
 
-
-    private static RepositoryConfig ourInstance = new RepositoryConfig();
-
     public static RepositoryConfig getRepositoryConfig() {
         return ourInstance;
-    }
-
-    private RepositoryConfig() {
     }
 }

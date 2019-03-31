@@ -1,6 +1,6 @@
 package shelter.domain.entity;
 
-public class Veterinarian extends Person{
+public class Veterinarian extends Person {
 
     private MedicalProcedure[] medicalInterventions;
     private Cage[] cages;

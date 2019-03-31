@@ -30,7 +30,6 @@ public class CageRepositoryImpl implements CageRepository {
             if (cage.getId() == id)
                 return cage;
         }
-        ;
         return null;
     }
 }
