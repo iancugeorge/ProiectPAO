@@ -3,6 +3,8 @@ package shelter.tool.builders;
 import shelter.domain.entity.Adopter;
 import shelter.domain.entity.Adoption;
 
+import java.util.Set;
+
 public class AdopterBuilder {
 
     private Adopter target = new Adopter();
@@ -27,7 +29,7 @@ public class AdopterBuilder {
         return this;
     }
 
-    public AdopterBuilder withAdoptions(Adoption[] adoptions) {
+    public AdopterBuilder withAdoptions(Set<Adoption> adoptions) {
         target.setAdoptions(adoptions);
         return this;
     }

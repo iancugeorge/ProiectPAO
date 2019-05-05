@@ -1,7 +1,9 @@
 import shelter.services.*;
 import shelter.tool.enums.MedType;
 
-import java.util.Date;
+import java.util.*;
+
+import static java.util.Arrays.asList;
 
 public class Run {
 
@@ -17,6 +19,7 @@ public class Run {
         cageService.addDogToCageById(2, 1);
         cageService.addDogToCageById(3, 2);
         cageService.addDogToCageById(4, 2);
+        cageService.listAllCages();
 
 
         medicalProcedureService.listAllMedicalProcedures();
@@ -34,6 +37,10 @@ public class Run {
         adoptionService.makeAdoption(2, 0, new Date());
         animalService.listAllAnimals();
         adoptionService.listAllAdoptions();
+
+        adopterService.listAllAdopters();
+
+        cageService.listAllCages();
 
     }
 }

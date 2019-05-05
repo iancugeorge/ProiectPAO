@@ -1,9 +1,12 @@
 package shelter.domain.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cage {
 
     private int id;
-    private Dog[] dogs;
+    private List<Dog> dogs = new ArrayList<>();
     private Veterinarian veterinarian;
 
     public int getId() {
@@ -14,11 +17,11 @@ public class Cage {
         this.id = id;
     }
 
-    public Dog[] getDogs() {
+    public List<Dog> getDogs() {
         return dogs;
     }
 
-    public void setDogs(Dog[] dogs) {
+    public void setDogs(List<Dog> dogs) {
         this.dogs = dogs;
     }
 

@@ -1,12 +1,13 @@
 package shelter.services;
 
 import shelter.configuration.RepositoryConfig;
+import shelter.domain.entity.Animal;
 import shelter.domain.entity.Cage;
 import shelter.domain.entity.Dog;
 import shelter.domain.repository.AnimalRepository;
 import shelter.domain.repository.CageRepository;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class CageService {
 
@@ -29,14 +30,8 @@ public class CageService {
     public void addDogToCage(Dog dog, Cage cage) {
         dog.setCage(cage);
 
-        Dog[] dogs;
-        if (cage.getDogs() != null) {
-            dogs = Arrays.copyOf(cage.getDogs(), cage.getDogs().length + 1);
-            dogs[cage.getDogs().length] = dog;
-        } else {
-            dogs = new Dog[1];
-            dogs[0] = dog;
-        }
+        List<Dog> dogs = cage.getDogs();
+        dogs.add(dog);
 
         cage.setDogs(dogs);
     }
@@ -64,7 +59,7 @@ public class CageService {
         System.out.println("Cage with ID: " + cage.getId());
         if (cage.getDogs() != null) {
             System.out.println("With dogs: ");
-            animalService.listAnimals(cage.getDogs());
+            animalService.listAnimals(cage.getDogs().toArray(new Animal[]{}));
         } else {
             System.out.println("Cage is empty.");
         }
@@ -73,7 +68,7 @@ public class CageService {
 
     public int numberOfDogs(int id) {
         if (cageRepo.getCageById(id).getDogs() != null) {
-            return cageRepo.getCageById(id).getDogs().length;
+            return cageRepo.getCageById(id).getDogs().toArray().length;
         }
         return 0;
     }

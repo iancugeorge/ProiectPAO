@@ -1,9 +1,6 @@
 package shelter.domain.repository;
 
-import shelter.domain.entity.Animal;
-import shelter.domain.entity.Cat;
-import shelter.domain.entity.Dog;
-import shelter.domain.entity.MedicalProcedure;
+import shelter.domain.entity.*;
 import shelter.tool.builders.CatBuilder;
 import shelter.tool.builders.DogBuilder;
 import shelter.tool.enums.Gender;
@@ -57,7 +54,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
     }
 
     public Dog[] getAllDogs() {
-        Dog[] dogs = (Dog[]) new Animal[10];
+        Dog[] dogs = (Dog[]) new Animal[100];
         int index = 0;
         for (Animal animal : animals) {
             Dog dog = new Dog();
@@ -70,7 +67,7 @@ public class AnimalRepositoryImpl implements AnimalRepository {
     }
 
     public Cat[] getAllCats() {
-        Cat[] cats = (Cat[]) new Animal[10];
+        Cat[] cats = (Cat[]) new Animal[100];
         int index = 0;
         for (Animal animal : animals) {
             Cat cat = new Cat();
@@ -115,6 +112,17 @@ public class AnimalRepositoryImpl implements AnimalRepository {
         return animal.getMedicalHistory();
     }
 
+    public Cage getCageByAnimalId(int animalId){
+
+        for (Animal animal : getAllAnimals()
+             ) {
+            if (animal.getId() == animalId) {
+                Dog dog = (Dog)animal;
+                return dog.getCage();
+            }
+        }
+        return null;
+    }
 
     /** File Read
      *

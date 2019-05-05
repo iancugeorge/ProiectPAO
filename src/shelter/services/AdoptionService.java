@@ -2,12 +2,17 @@ package shelter.services;
 
 import shelter.configuration.RepositoryConfig;
 import shelter.domain.entity.Adoption;
+import shelter.domain.entity.Cage;
+import shelter.domain.entity.Dog;
 import shelter.domain.repository.AdopterRepository;
 import shelter.domain.repository.AdoptionRepository;
 import shelter.domain.repository.AnimalRepository;
+import shelter.domain.repository.CageRepository;
 import shelter.tool.builders.AdoptionBuilder;
 
 import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 public class AdoptionService {
 
@@ -15,6 +20,7 @@ public class AdoptionService {
     private AdoptionRepository adoptionRepo = RepositoryConfig.getAdoptionRepository();
     private AnimalRepository animalRepo = RepositoryConfig.getAnimalRepository();
     private AdopterRepository adopterRepo = RepositoryConfig.getAdopterRepository();
+    private CageRepository cageRepo = RepositoryConfig.getCageRepository();
 
     private AdoptionService() {
     }
@@ -53,9 +59,17 @@ public class AdoptionService {
                 .withDate(date)
                 .build();
         animalRepo.getAnimalById(animalId).setAdoption(adoption);
-        // TODO: create add adoption in Adopter
-        // adopterRepo.getAdopterById(adopterId).setAdoptions();
-        // TODO: set Cage of animal to null and  delete Cage->Animal
+
+        // add adoption in Adopter
+        Set<Adoption> adoptionsSet = adopterRepo.getAdopterById(adopterId).getAdoptions();
+        adoptionsSet.add(adoption);
+        adopterRepo.getAdopterById(adopterId).setAdoptions(adoptionsSet);
+
+        // delete Cage->Animal
+        Cage cage = animalRepo.getCageByAnimalId(animalId);
+        List<Dog> dogsInCage = cage.getDogs();
+        dogsInCage.remove(animalRepo.getAnimalById(animalId));
+
         adoptionRepo.addAdoption(adoption);
     }
 }

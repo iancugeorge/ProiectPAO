@@ -4,6 +4,8 @@ import shelter.domain.entity.Cage;
 import shelter.domain.entity.Dog;
 import shelter.domain.entity.Veterinarian;
 
+import java.util.List;
+
 public class CageBuilder {
 
     private final Cage target = new Cage();
@@ -13,7 +15,7 @@ public class CageBuilder {
         return this;
     }
 
-    public CageBuilder withDogs(Dog[] dogs) {
+    public CageBuilder withDogs(List<Dog> dogs) {
         target.setDogs(dogs);
         return this;
     }

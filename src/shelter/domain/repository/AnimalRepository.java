@@ -3,6 +3,7 @@ package shelter.domain.repository;
 import shelter.domain.entity.Animal;
 import shelter.domain.entity.Cat;
 import shelter.domain.entity.Dog;
+import shelter.domain.entity.Cage;
 import shelter.domain.entity.MedicalProcedure;
 
 public interface AnimalRepository {
@@ -21,4 +22,5 @@ public interface AnimalRepository {
 
     void addCat(Cat cat);
 
+    Cage getCageByAnimalId(int animalId);
 }
