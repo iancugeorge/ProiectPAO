@@ -10,8 +10,8 @@ public class TestData {
         return instance;
     }
 
-    public String[] getDogData() {
-        String[] ext = {"1,Max", "2,Tom"};
+    public String[] getAnimalData() {
+        String[] ext = {"1,Max", "2,Tom", "3,Recs"};
         return ext;
     }
 }

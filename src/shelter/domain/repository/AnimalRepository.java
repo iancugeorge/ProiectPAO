@@ -6,9 +6,14 @@ import shelter.domain.entity.Dog;
 import shelter.domain.entity.Cage;
 import shelter.domain.entity.MedicalProcedure;
 
+import java.util.List;
+
 public interface AnimalRepository {
 
-    Animal[] getAllAnimals();
+    void getData();
+    void setData();
+
+    List<Animal> getAllAnimals();
 
     Dog[] getAllDogs();
 

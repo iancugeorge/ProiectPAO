@@ -5,7 +5,7 @@ import shelter.domain.repository.*;
 public class RepositoryConfig {
 
     private static final CageRepository cageRepository = new CageRepositoryImpl();
-    private static final AnimalRepository animalRepository = new AnimalRepositoryImpl();
+    private static final AnimalRepository animalRepository = new AnimalRepositorySmartImpl();
     private static final AdoptionRepository adoptionRepository = new AdoptionRepositoryImpl();
     private static final MedicalProcedureRepository medicalProcedureRepository = new MedicalProcedureImpl();
     private static final VeterinarianRepository veterinarianRepository = new VeterinarianRepositoryImpl();

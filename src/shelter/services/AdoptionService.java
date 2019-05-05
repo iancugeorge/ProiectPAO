@@ -67,8 +67,10 @@ public class AdoptionService {
 
         // delete Cage->Animal
         Cage cage = animalRepo.getCageByAnimalId(animalId);
-        List<Dog> dogsInCage = cage.getDogs();
-        dogsInCage.remove(animalRepo.getAnimalById(animalId));
+        if(cage != null) {
+            List<Dog> dogsInCage = cage.getDogs();
+            dogsInCage.remove(animalRepo.getAnimalById(animalId));
+        }
 
         adoptionRepo.addAdoption(adoption);
     }

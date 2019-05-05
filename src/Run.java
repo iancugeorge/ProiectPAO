@@ -1,9 +1,8 @@
 import shelter.services.*;
+import shelter.tool.enums.Gender;
 import shelter.tool.enums.MedType;
 
 import java.util.*;
-
-import static java.util.Arrays.asList;
 
 public class Run {
 
@@ -14,6 +13,13 @@ public class Run {
         AdoptionService adoptionService = AdoptionService.getAdoptionService();
         MedicalProcedureService medicalProcedureService = MedicalProcedureService.getMedicalProcedureService();
         AdopterService adopterService = AdopterService.getAdopterService();
+
+        animalService.loadData();
+        animalService.listAllAnimals();
+
+        animalService.addCat(7,"Felix", Gender.MALE);
+
+        animalService.saveData();
 
         cageService.addDogToCageById(1, 1);
         cageService.addDogToCageById(2, 1);

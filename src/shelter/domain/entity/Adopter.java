@@ -7,7 +7,6 @@ import java.util.TreeSet;
 
 public class Adopter extends Person {
 
-    // TODO: TRANSFORMA IN TREESET (SORT DUPA DATA ??)
     private Set<Adoption> adoptions = new TreeSet<>(new DateComparator());
 
     public Set<Adoption> getAdoptions() {

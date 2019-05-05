@@ -28,6 +28,13 @@ public class AnimalService {
         }
     }
 
+    public void loadData(){
+        animalRepo.getData();
+    }
+    public void saveData(){
+        animalRepo.setData();
+    }
+
 
     public boolean checkAdopted(Animal animal) {
         return animal.getAdoption() != null;

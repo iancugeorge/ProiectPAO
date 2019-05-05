@@ -7,7 +7,7 @@ import shelter.tool.enums.Gender;
 
 import java.util.Arrays;
 
-public class AnimalRepositoryImpl implements AnimalRepository {
+public class AnimalRepositoryImpl {
 
 
     private Animal[] animals =
@@ -48,6 +48,8 @@ public class AnimalRepositoryImpl implements AnimalRepository {
                             .withPassportId("B54321")
                             .build()
             };
+
+    public void getData(){};
 
     public Animal[] getAllAnimals() {
         return animals;
